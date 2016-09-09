@@ -1,1 +1,9 @@
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\bin\Debug\JapaneseAtWork.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\bin\Debug\JapaneseAtWork.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\bin\Debug\JapaneseAtWork.pdb
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.Form1.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.pdb
