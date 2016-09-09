@@ -116,7 +116,7 @@ namespace JapaneseAtWork
                         label1.Text = "NA";
                     }
                 }
-                //如果答錯 顯示答案
+                //如果答錯 顯示答案 
                 else {
                     label2.Text = obj.Spell;
                 }
