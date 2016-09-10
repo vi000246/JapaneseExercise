@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -39,7 +40,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +91,18 @@
             this.button3.Text = "口";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlFormMax_MouseClick);
+            // 
+            // button6
+            // 
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button6.Location = new System.Drawing.Point(68, 0);
+            this.button6.Name = "button6";
+            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button6.Size = new System.Drawing.Size(25, 23);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "✚";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button2
             // 
@@ -168,17 +181,15 @@
             this.label4.Text = "0";
             this.label4.Visible = false;
             // 
-            // button6
+            // label5
             // 
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(68, 0);
-            this.button6.Name = "button6";
-            this.button6.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button6.Size = new System.Drawing.Size(25, 23);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "✚";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Location = new System.Drawing.Point(134, 216);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 12);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "剩餘:";
             // 
             // Form1
             // 
@@ -186,6 +197,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(222, 297);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -218,6 +230,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label5;
     }
 }
 

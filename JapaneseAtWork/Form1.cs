@@ -34,6 +34,8 @@ namespace JapaneseAtWork
             label1.Font = new Font(label1.Font.FontFamily, 72f, label1.Font.Style);
             //初始化測驗
             PracticeInit(true);
+            //計算剩下的個數
+            label5.Text = "剩餘:" + queue.Count;
         }
 
 
@@ -157,6 +159,8 @@ namespace JapaneseAtWork
                     if (!ErrorQueue.Contains(obj))
                         ErrorQueue.Enqueue(obj);
                 }
+                //計算剩下的個數
+                label5.Text = "剩餘:"+queue.Count;
                 //清空TextBox
                 textBox2.Clear();
             }
