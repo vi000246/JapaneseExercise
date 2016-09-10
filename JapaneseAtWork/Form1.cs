@@ -231,7 +231,7 @@ namespace JapaneseAtWork
                 PracticeInit(true);
             }
             //加強練習的按鈕 熱鍵是E
-            if (keyData ==  Keys.E && button4.Visible == true)
+            if (keyData == Keys.E && button4.Visible == true && ErrorQueue.Count>0)
             {
                 button4.Visible = false;
                 button5.Visible = false;
