@@ -68,10 +68,15 @@ namespace JapaneseAtWork
                 TotalChar = queue.Count;
                 ErrorQueue.Clear();
             }
-
-            //取出佇列
-            obj = queue.Dequeue();
-            label1.Text = obj.Name;
+            if (queue.Count > 0)
+            {
+                //取出佇列
+                obj = queue.Dequeue();
+                label1.Text = obj.Name;
+            }
+            else {
+                MessageBox.Show("題目清單為空，請按'加號按鈕'設置題目範圍");
+            }
         }
 
         #region 視窗相關
