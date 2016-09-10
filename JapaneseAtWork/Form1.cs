@@ -246,9 +246,10 @@ namespace JapaneseAtWork
             PracticeInit(true);
         }
         //提示按鈕
-        private void label3_Click(object sender, EventArgs e)
+        private void Helper_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("輸入完羅馬拼音後請按空白鍵");
+            MessageBox.Show(@"輸入完羅馬拼音後請按空白鍵
+按加號按鈕可設置考試範圍");
         }
 
         #region 鍵盤按鈕監聽 用來給按鈕添加熱鍵
