@@ -8,6 +8,7 @@ namespace JapaneseAtWork
 {
     public static class Model
     {
+        #region 平假名 清音
         /// <summary>
         /// 平假名 清音
         /// </summary>
@@ -61,7 +62,8 @@ namespace JapaneseAtWork
             new ItemCollection("を","wo","w"),
             new ItemCollection("ん","n","n")
         };
-
+        #endregion 
+        #region 片假名 清音
         /// <summary>
         /// 片假名 清音
         /// </summary>
@@ -113,8 +115,9 @@ namespace JapaneseAtWork
             new ItemCollection("ワ","wa","w"),
             new ItemCollection("ヲ","wo","w"),
             new ItemCollection("ン","n","n")
-        }; 
-
+        };
+        #endregion
+        #region 平假名 濁音與半濁音
         /// <summary>
         /// 平假名 濁音與半濁音
         /// </summary>
@@ -146,7 +149,8 @@ namespace JapaneseAtWork
             new ItemCollection("ぺ","pe","p"),
             new ItemCollection("ぽ","po","p")
         };
-
+        #endregion
+        #region  片假名 濁音與半濁音
         /// <summary>
         /// 片假名 濁音與半濁音
         /// </summary>
@@ -178,7 +182,8 @@ namespace JapaneseAtWork
             new ItemCollection("ペ","pe","p"),
             new ItemCollection("ポ","po","p")
         };
-
+        #endregion
+        #region 平假名 拗音
         /// <summary>
         /// 平假名 拗音
         /// </summary>
@@ -218,7 +223,8 @@ namespace JapaneseAtWork
             new ItemCollection("ぴゅ","pyu","p"),
             new ItemCollection("ぴょ","pyo","p")
         };
-
+        #endregion
+        #region 片假名 拗音
         /// <summary>
         /// 片假名 拗音
         /// </summary>
@@ -258,6 +264,18 @@ namespace JapaneseAtWork
             new ItemCollection("ピュ","pyu","p"),
             new ItemCollection("ピョ","pyo","p")
         };
+        #endregion 
+
+        /// <summary>
+        /// 測試用
+        /// </summary>
+        public static readonly List<ItemCollection> Test =
+            new List<ItemCollection>() { 
+            new ItemCollection("a","a","1"), 
+            new ItemCollection("b","b","1"),
+            new ItemCollection("c","c","2"),
+            new ItemCollection("d","d","2"),
+            };
 
 
         /// <summary>
