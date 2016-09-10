@@ -73,7 +73,7 @@ namespace JapaneseAtWork.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool HiraganaBend {
             get {
                 return ((bool)(this["HiraganaBend"]));

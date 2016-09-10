@@ -7,4 +7,3 @@ C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\Japa
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.exe
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.pdb
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.Form2.resources
-C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.csprojResolveAssemblyReference.cache
