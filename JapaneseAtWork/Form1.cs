@@ -29,6 +29,9 @@ namespace JapaneseAtWork
             label2.Text = "";
             //將背景設成黃綠 再將黃綠的顏色通通設成透明
             this.BackColor = Color.YellowGreen; this.TransparencyKey = Color.YellowGreen;
+
+            //重設主lable的寬度 避免字體超出
+            label1.Font = new Font(label1.Font.FontFamily, 72f, label1.Font.Style);
             //初始化測驗
             PracticeInit(true);
         }
@@ -50,7 +53,7 @@ namespace JapaneseAtWork
             if (IsReset)
             {
                 //取得平假名、片假名清單 並轉成佇列
-                var list = Model.Test;
+                var list = Model.HiraganaClean;
                 //打亂排序
                 list.Shuffle();
                 //將list轉成佇列
@@ -207,6 +210,21 @@ namespace JapaneseAtWork
             button5.Visible = false;
             PracticeInit(true);
         }
+
+        /// <summary>
+        /// 設置config
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Form2 settingsForm = new Form2();
+
+            // Show the settings form
+            settingsForm.Show();
+        }
+
+
         //提示按鈕
         private void label3_Click(object sender, EventArgs e)
         {
@@ -240,6 +258,8 @@ namespace JapaneseAtWork
             return base.ProcessCmdKey(ref msg, keyData);
         }
         #endregion
+
+
 
 
 
