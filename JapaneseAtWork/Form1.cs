@@ -34,8 +34,6 @@ namespace JapaneseAtWork
             label1.Font = new Font(label1.Font.FontFamily, 72f, label1.Font.Style);
             //初始化測驗
             PracticeInit(true);
-            //計算剩下的個數
-            label5.Text = "剩餘:" + queue.Count;
         }
 
 
@@ -77,6 +75,10 @@ namespace JapaneseAtWork
             else {
                 MessageBox.Show("題目清單為空，請按'加號按鈕'設置題目範圍");
             }
+
+            //計算剩下的個數
+            label5.Text = "剩餘:" + queue.Count;
+
         }
 
         #region 視窗相關
@@ -221,19 +223,28 @@ namespace JapaneseAtWork
         }
 
         /// <summary>
-        /// 設置config
+        /// 設置config popup window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button6_Click(object sender, EventArgs e)
         {
-            Form2 settingsForm = new Form2();
-
-            // Show the settings form
-            settingsForm.Show();
+            if (MessageBox.Show("設置測驗範圍將會重置此次測驗，是否繼續?", "Close", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Form2 settingsForm = new Form2();
+                settingsForm.FormClosed += new FormClosedEventHandler(settingsForm_FormClosed);
+                // Show the settings form
+                settingsForm.Show(this);
+                this.Hide();
+            }
         }
-
-
+        //彈出窗口關閉事件
+        void settingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();//子視窗關閉時,父視窗再顯示出來
+            //初始化測驗
+            PracticeInit(true);
+        }
         //提示按鈕
         private void label3_Click(object sender, EventArgs e)
         {

@@ -1,1 +1,4 @@
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\bin\Debug\JapaneseAtWork.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\bin\Debug\JapaneseAtWork.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\JapaneseAtWork\JapaneseAtWork\obj\Debug\JapaneseAtWork.pdb
