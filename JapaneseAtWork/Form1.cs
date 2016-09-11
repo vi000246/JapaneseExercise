@@ -47,17 +47,15 @@ namespace JapaneseAtWork
             label4.Visible = false;
             //enable文字輸入框
             textBox2.Enabled = true;
+            //清掉錯誤提示
+            label2.Text = "";
             //文字輸入框focus
             textBox2.Select();
             //如果是重新開始
             if (IsReset)
             {
-                //取得平假名、片假名清單 並轉成佇列
-                var list = Model.HiraganaClean;
-                //打亂排序
-                list.Shuffle();
-                //將list轉成佇列
-                queue = new Queue<ItemCollection>(list);
+                //從model取得list 將list轉成佇列
+                queue = new Queue<ItemCollection>(GetDataFromModel());
                 TotalChar = queue.Count;
             }
             //如果是加強練習錯誤清單
@@ -79,6 +77,37 @@ namespace JapaneseAtWork
             //計算剩下的個數
             label5.Text = "剩餘:" + queue.Count;
 
+        }
+
+        /// <summary>
+        /// 依據setting設定的範圍 取得資料
+        /// </summary>
+        /// <returns></returns>
+        public List<ItemCollection> GetDataFromModel() {
+            List<ItemCollection> list = new List<ItemCollection>();
+            //取得平假名、片假名清單 並轉成佇列
+            //平假名 清音
+            if((bool)Properties.Settings.Default["HiraganaClean"])
+                list.AddRange(Model.HiraganaClean);
+            //平假名 濁音
+            if((bool)Properties.Settings.Default["HiraganaMuddy"])
+                list.AddRange(Model.HiraganaMuddy);
+            //平假名 拗音
+            if((bool)Properties.Settings.Default["HiraganaBend"])
+                list.AddRange(Model.HiraganaBend);
+            //片假名 清音
+            if((bool)Properties.Settings.Default["KatakanaClean"])
+                list.AddRange(Model.KatakanaClean);
+            //片假名 濁音
+            if((bool)Properties.Settings.Default["KatakanaMuddy"])
+                list.AddRange(Model.KatakanaMuddy);
+            //片假名 拗音
+            if((bool)Properties.Settings.Default["KatakanaBend"])
+                list.AddRange(Model.KatakanaBend);
+            
+            //打亂排序
+            list.Shuffle();
+            return list;
         }
 
         #region 視窗相關
