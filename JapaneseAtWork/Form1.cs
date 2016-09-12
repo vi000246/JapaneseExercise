@@ -245,12 +245,14 @@ namespace JapaneseAtWork
 答對率 :{2}%
 ", TotalChar, ErrorChar, Math.Round(((TotalChar - ErrorChar) / TotalChar) * 100, 2));
 
+
+                label1.Focus();
+                button5.Visible = true;
+
                 //顯示加強練習鈕和重新開始鈕
                 if (ErrorChar > 0)
                     button4.Visible = true;
 
-                button5.Visible = true;
-                button5.Focus();
             }
             catch (Exception ex) {
                 ShowErrorMsg("QueueComplete"+ex.Message);
