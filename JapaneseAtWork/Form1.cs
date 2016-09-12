@@ -15,7 +15,7 @@ namespace JapaneseAtWork
         //全部片假名、平假名所用的集合佇列
         public Queue<ItemCollection> queue;
         //錯誤的字都丟到這裡
-        public Queue<ItemCollection> ErrorQueue =new Queue<ItemCollection>();
+        public List<ItemCollection> ErrorQueue = new List<ItemCollection>();
         public ItemCollection obj;
         //總題數
         public float TotalChar;
@@ -42,40 +42,48 @@ namespace JapaneseAtWork
         /// </summary>
         /// <param name="IsReset">是否重設佇列</param>
         public void PracticeInit(bool IsReset){
-
-            //隱藏成績lable
-            label4.Visible = false;
-            //enable文字輸入框
-            textBox2.Enabled = true;
-            //清掉錯誤提示
-            label2.Text = "";
-            //文字輸入框focus
-            textBox2.Select();
-            //如果是重新開始
-            if (IsReset)
+            try
             {
-                //從model取得list 將list轉成佇列
-                queue = new Queue<ItemCollection>(GetDataFromModel());
-                TotalChar = queue.Count;
-            }
-            //如果是加強練習錯誤清單
-            else {
-                queue = new Queue<ItemCollection>(ErrorQueue);
-                TotalChar = queue.Count;
-                ErrorQueue.Clear();
-            }
-            if (queue.Count > 0)
-            {
-                //取出佇列
-                obj = queue.Dequeue();
-                label1.Text = obj.Name;
-            }
-            else {
-                MessageBox.Show("題目清單為空，請按'加號按鈕'設置題目範圍");
-            }
+                //隱藏成績lable
+                label4.Visible = false;
+                //enable文字輸入框
+                textBox2.Enabled = true;
+                //清掉錯誤提示
+                label2.Text = "";
+                //文字輸入框focus
+                textBox2.Select();
+                //如果是重新開始
+                if (IsReset)
+                {
+                    //從model取得list 將list轉成佇列
+                    queue = new Queue<ItemCollection>(GetDataFromModel());
+                    TotalChar = queue.Count;
+                }
+                //如果是加強練習錯誤清單
+                else
+                {
+                    ErrorQueue.Shuffle();
+                    queue = new Queue<ItemCollection>(ErrorQueue);
+                    TotalChar = queue.Count;
+                    ErrorQueue.Clear();
+                }
+                if (queue.Count > 0)
+                {
+                    //取出佇列
+                    obj = queue.Dequeue();
+                    label1.Text = obj.Name;
+                }
+                else
+                {
+                    MessageBox.Show("題目清單為空，請按'加號按鈕'設置題目範圍");
+                }
 
-            //計算剩下的個數
-            label5.Text = "剩餘:" + queue.Count;
+                //計算剩下的個數
+                label5.Text = "剩餘:" + queue.Count;
+            }
+            catch (Exception ex) {
+                ShowErrorMsg("PracticeInit"+ex.Message);
+            }
 
         }
 
@@ -85,28 +93,34 @@ namespace JapaneseAtWork
         /// <returns></returns>
         public List<ItemCollection> GetDataFromModel() {
             List<ItemCollection> list = new List<ItemCollection>();
-            //取得平假名、片假名清單 並轉成佇列
-            //平假名 清音
-            if((bool)Properties.Settings.Default["HiraganaClean"])
-                list.AddRange(Model.HiraganaClean);
-            //平假名 濁音
-            if((bool)Properties.Settings.Default["HiraganaMuddy"])
-                list.AddRange(Model.HiraganaMuddy);
-            //平假名 拗音
-            if((bool)Properties.Settings.Default["HiraganaBend"])
-                list.AddRange(Model.HiraganaBend);
-            //片假名 清音
-            if((bool)Properties.Settings.Default["KatakanaClean"])
-                list.AddRange(Model.KatakanaClean);
-            //片假名 濁音
-            if((bool)Properties.Settings.Default["KatakanaMuddy"])
-                list.AddRange(Model.KatakanaMuddy);
-            //片假名 拗音
-            if((bool)Properties.Settings.Default["KatakanaBend"])
-                list.AddRange(Model.KatakanaBend);
-            
-            //打亂排序
-            list.Shuffle();
+            try
+            {
+                //取得平假名、片假名清單 並轉成佇列
+                //平假名 清音
+                if ((bool)Properties.Settings.Default["HiraganaClean"])
+                    list.AddRange(Model.HiraganaClean);
+                //平假名 濁音
+                if ((bool)Properties.Settings.Default["HiraganaMuddy"])
+                    list.AddRange(Model.HiraganaMuddy);
+                //平假名 拗音
+                if ((bool)Properties.Settings.Default["HiraganaBend"])
+                    list.AddRange(Model.HiraganaBend);
+                //片假名 清音
+                if ((bool)Properties.Settings.Default["KatakanaClean"])
+                    list.AddRange(Model.KatakanaClean);
+                //片假名 濁音
+                if ((bool)Properties.Settings.Default["KatakanaMuddy"])
+                    list.AddRange(Model.KatakanaMuddy);
+                //片假名 拗音
+                if ((bool)Properties.Settings.Default["KatakanaBend"])
+                    list.AddRange(Model.KatakanaBend);
+
+                //打亂排序
+                list.Shuffle();
+            }
+            catch (Exception ex) {
+                ShowErrorMsg("GetDataFromModel"+ex.Message);
+            }
             return list;
         }
 
@@ -168,37 +182,45 @@ namespace JapaneseAtWork
         /// <param name="e"></param>
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //輸入空白鍵
-            if (e.KeyChar == ' ') 
-            { 
-
-                //如果答對 取出下一個物件
-                if (textBox2.Text.ToLower().Trim() == obj.Spell)
+            try
+            {
+                //輸入空白鍵
+                if (e.KeyChar == ' ')
                 {
-                    //清掉錯誤提示
-                    label2.Text = "";
 
-                    if (queue.Count > 0)
+                    //如果答對 取出下一個物件
+                    if (textBox2.Text.ToLower().Trim() == obj.Spell)
                     {
-                        obj = queue.Dequeue();
-                        label1.Text = obj.Name;
+                        //清掉錯誤提示
+                        label2.Text = "";
+
+                        if (queue.Count > 0)
+                        {
+                            obj = queue.Dequeue();
+                            label1.Text = obj.Name;
+                        }
+                        else
+                        {
+                            //所有的佇列都完成
+                            QueueComplete();
+                        }
                     }
+                    //如果答錯 顯示答案 並將obj排進錯誤字佇列
                     else
                     {
-                        //所有的佇列都完成
-                        QueueComplete();
+                        label2.Text = obj.Spell;
+                        if (!ErrorQueue.Contains(obj))
+                            ErrorQueue.Add(obj);
                     }
+                    //計算剩下的個數
+                    label5.Text = "剩餘:" + queue.Count;
+                    //清空TextBox
+                    textBox2.Clear();
                 }
-                //如果答錯 顯示答案 並將obj排進錯誤字佇列
-                else {
-                    label2.Text = obj.Spell;
-                    if (!ErrorQueue.Contains(obj))
-                        ErrorQueue.Enqueue(obj);
-                }
-                //計算剩下的個數
-                label5.Text = "剩餘:"+queue.Count;
-                //清空TextBox
-                textBox2.Clear();
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMsg("textBox2_KeyPress"+ex.Message);
             }
         }
 
@@ -207,25 +229,32 @@ namespace JapaneseAtWork
         /// </summary>
 
         public void QueueComplete() {
-            label1.Text = "";
-            obj = null;
-            textBox2.Enabled = false;
-            //成績lable
-            label4.Visible = true;
-            //答錯數
-            ErrorChar=ErrorQueue.Count;
-            //顯示成績
-            label4.Text = string.Format(@"成績:
+            try
+            {
+                label1.Text = "";
+                obj = null;
+                textBox2.Enabled = false;
+                //成績lable
+                label4.Visible = true;
+                //答錯數
+                ErrorChar = ErrorQueue.Count;
+                //顯示成績
+                label4.Text = string.Format(@"成績:
 總題數 :{0}
 答錯數 :{1}
 答對率 :{2}%
-", TotalChar, ErrorChar, Math.Round(((TotalChar-ErrorChar) / TotalChar) * 100, 2));
-            
-            //顯示加強練習鈕和重新開始鈕
-            if(ErrorChar>0)
-                button4.Visible = true;
+", TotalChar, ErrorChar, Math.Round(((TotalChar - ErrorChar) / TotalChar) * 100, 2));
 
-            button5.Visible = true;
+                //顯示加強練習鈕和重新開始鈕
+                if (ErrorChar > 0)
+                    button4.Visible = true;
+
+                button5.Visible = true;
+                button5.Focus();
+            }
+            catch (Exception ex) {
+                ShowErrorMsg("QueueComplete"+ex.Message);
+            }
         }
 
         /// <summary>
@@ -291,26 +320,34 @@ namespace JapaneseAtWork
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            //重新開始的按鈕 熱鍵是R
-            if (keyData ==Keys.R && button5.Visible==true)
+            try
             {
-                button4.Visible = false;
-                button5.Visible = false;
-                PracticeInit(true);
+                //重新開始的按鈕 熱鍵是R
+                if (keyData == Keys.R && button5.Visible == true)
+                {
+                    button4.Visible = false;
+                    button5.Visible = false;
+                    PracticeInit(true);
+                }
+                //加強練習的按鈕 熱鍵是E
+                if (keyData == Keys.E && button4.Visible == true && ErrorQueue.Count > 0)
+                {
+                    button4.Visible = false;
+                    button5.Visible = false;
+                    PracticeInit(false);
+                } 
             }
-            //加強練習的按鈕 熱鍵是E
-            if (keyData == Keys.E && button4.Visible == true && ErrorQueue.Count>0)
-            {
-                button4.Visible = false;
-                button5.Visible = false;
-                PracticeInit(false);
+            catch (Exception ex) {
+                ShowErrorMsg("ProcessCmdKey"+ex.Message);
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
         #endregion
 
-
-
+        //顯示錯誤訊息
+        public void ShowErrorMsg(string msg) {
+            MessageBox.Show(msg);
+        }
 
 
 
