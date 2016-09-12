@@ -55,6 +55,7 @@ namespace JapaneseAtWork
                 //如果是重新開始
                 if (IsReset)
                 {
+                    ErrorQueue.Clear();
                     //從model取得list 將list轉成佇列
                     queue = new Queue<ItemCollection>(GetDataFromModel());
                     TotalChar = queue.Count;
