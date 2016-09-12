@@ -32,6 +32,12 @@ namespace JapaneseAtWork
 
             //重設主lable的寬度 避免字體超出
             label1.Font = new Font(label1.Font.FontFamily, 72f, label1.Font.Style);
+            //設置tooltip
+            this.toolTip1.SetToolTip(this.button1, "關閉");
+            this.toolTip1.SetToolTip(this.button2, "最小化");
+            this.toolTip1.SetToolTip(this.button6, "設置範圍");
+            this.toolTip1.SetToolTip(this.pictureBox1, "說明");
+            
             //初始化測驗
             PracticeInit(true);
         }
